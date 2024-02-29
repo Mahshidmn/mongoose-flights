@@ -15,8 +15,8 @@ const create = async (req, res) => {
     }
     // all the below lines are the same
     res.redirect(`/flights/${flight._id}`);
-   // res.redirect('/flights' + flight._id}`);
-   // res.redirect('/flights' + req.params.id}`);
+   // res.redirect('/flights' + flight._id);
+   // res.redirect('/flights' + req.params.id);
 };
 
 module.exports = {

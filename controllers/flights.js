@@ -1,5 +1,5 @@
 const Flight = require('../models/flight');
-
+const Ticket = require('../models/ticket');
 async function index(req, res) {
     const flights = await Flight.find({});
     res.render('flights/index', { title: 'All Flights', flights});
@@ -7,7 +7,8 @@ async function index(req, res) {
 
 async function show(req, res) {
     const flight = await Flight.findById(req.params.id);
-    res.render('flights/show', { title: 'Flight Detail', flight });
+    const tickets = await Ticket.find({flight: flight._id});
+    res.render('flights/show', { title: 'Flight Detail', tickets, flight });
   }
 
   // TODO: check why its not working
@@ -31,7 +32,7 @@ function newFlight(req, res) {
     try {
       await Flight.create(req.body);
       // Always redirect after CUDing data
-      // We'll refactor to redirect to the movies index after we implement it
+      // We'll refactor to redirect to the flights index after we implement it
       res.redirect('/flights');  // Update this line
     } catch (err) {
       // Typically some sort of validation error

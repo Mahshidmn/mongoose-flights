@@ -53,6 +53,34 @@
     <h5>No Destinations Added Yet</h5>
   <% } %>
 
+<!-- the path in action shows the path that should be matched in related router path
+// and then the related function in controller will be performed which render or redirect the show-page
+// remeber that method salso should match to the method of that path --> 
+<form id="add-destination-form" method="GET"  
+  action="/flights/<%= flight._id %>/tickets/new"> 
+  <input type="submit" value="Add Ticket">
+</form>
+  <% if (tickets.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Seat</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tickets.forEach(function(t) { %>
+          <tr>
+            <td><%= t.seat %></td>
+            <td><%= t.price %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h5>No Tickets Added Yet</h5>
+  <% } %>
+
 
 
 <%- include('../partials/footer') %>

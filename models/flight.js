@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
+
+
 
 const destinationSchema = new Schema ({
   airport: {
@@ -35,7 +38,8 @@ const flightSchema = new Schema({
       return currentYear + 1;
     },
   },
-  destinations: [destinationSchema]
+  destinations: [destinationSchema],
+  
 }, {
   timestamps: true
 });
